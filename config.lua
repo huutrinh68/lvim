@@ -20,10 +20,11 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+-- user add
 -- tabs
-lvim.keys.normal_mode["<Tab>"] = "gt"
-lvim.keys.normal_mode["<S-Tab>"] = "gT"
 lvim.keys.normal_mode["<S-t>"] = ":tabnew<cr>"
+lvim.keys.normal_mode["gt"] = ":tabn<cr>"
+lvim.keys.normal_mode["Gt"] = ":tabp<cr>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -229,6 +230,8 @@ lvim.plugins = {
     end,
   },
   { "mg979/vim-visual-multi" },
+  { "godlygeek/tabular" },
+  { "preservim/vim-markdown" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
