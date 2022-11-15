@@ -1,6 +1,5 @@
 --[[
 lvim is the global options object
-
 Linters should be
 filled in as strings with either
 a global executable or a path to
@@ -24,7 +23,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- tabs
 lvim.keys.normal_mode["<S-t>"] = ":tabnew<cr>"
 lvim.keys.normal_mode["gt"] = ":tabn<cr>"
-lvim.keys.normal_mode["Gt"] = ":tabp<cr>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -68,10 +66,12 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.view.width = 40
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
+  "html",
   "bash",
   "c",
   "javascript",
@@ -152,7 +152,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
+  -- { "folke/tokyonight.nvim" },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
@@ -202,12 +202,6 @@ lvim.plugins = {
     "tpope/vim-fugitive"
   },
   {
-    "Pocco81/AutoSave.nvim",
-    config = function()
-      require("autosave").setup()
-    end,
-  },
-  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({ "*" }, {
@@ -231,7 +225,8 @@ lvim.plugins = {
   },
   { "mg979/vim-visual-multi" },
   { "godlygeek/tabular" },
-  { "preservim/vim-markdown" },
+  -- { "preservim/vim-markdown" },
+  { "nvim-telescope/telescope.nvim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -256,26 +251,6 @@ lspconfig.emmet_ls.setup({
   -- on_attach = on_attach,
   filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 })
-
---autosave
-local autosave = require("autosave")
-autosave.setup(
-  {
-    enabled = true,
-    execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-    events = { "InsertLeave", "TextChanged" },
-    conditions = {
-      exists = true,
-      filename_is_not = {},
-      filetype_is_not = {},
-      modifiable = true
-    },
-    write_all_buffers = false,
-    on_off_commands = true,
-    clean_command_line_interval = 0,
-    debounce_delay = 135
-  }
-)
 
 -- nvim-colorizer
 local colorizer = require("colorizer")
