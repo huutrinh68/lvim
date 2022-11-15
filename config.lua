@@ -63,7 +63,7 @@ lvim.keys.normal_mode["gt"] = ":tabn<cr>"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = false
+-- lvim.builtin.notify.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.view.width = 40
@@ -202,20 +202,6 @@ lvim.plugins = {
     "tpope/vim-fugitive"
   },
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
-    end,
-  },
-  {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
@@ -226,7 +212,6 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },
   { "godlygeek/tabular" },
   -- { "preservim/vim-markdown" },
-  { "nvim-telescope/telescope.nvim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -251,7 +236,3 @@ lspconfig.emmet_ls.setup({
   -- on_attach = on_attach,
   filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 })
-
--- nvim-colorizer
-local colorizer = require("colorizer")
-colorizer.setup()
